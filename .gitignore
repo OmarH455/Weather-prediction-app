@@ -1,2 +1,11 @@
-config.js
-config.py
+# Ignore specific config file
+weather-prediction/src/config.js
+
+# Ignore the entire node_modules directory
+weather-prediction/node_modules/
+
+# Ignore all JavaScript files in the backend (if it's not part of the frontend)
+weather-prediction/backend/*.js
+
+#ignore other temporary files or logs
+*.log

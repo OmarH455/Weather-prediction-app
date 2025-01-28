@@ -16,6 +16,8 @@ function App() {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
+  
 
   // Fetch locations with error handling and loading state
   useEffect(() => {
@@ -125,6 +127,9 @@ function App() {
     }
   };
 
+  const handleInfoToggle = () => {
+    setShowInfo((prev) => !prev);
+  };
   const displayResult = (data, location) => {
     const { average, max, min } = data.summary;
     setResult(
@@ -137,14 +142,30 @@ function App() {
 
   return (
     <div className="container">
-      <button
-        onClick={() => window.open("https://www.linkedin.com/school/pmaccelerator/", "_blank")}
-        className="linkedin-button"
-        aria-label="Visit PM Accelerator on LinkedIn"
-      >
-        Visit PM Accelerator
+            <header>
+        <h1>Weather Prediction by Omar Hassan</h1>
+      </header>
+      <button onClick={handleInfoToggle} className="info-button">
+        {showInfo ? "Hide Info" : "About PM Accelerator"}
       </button>
 
+      {showInfo && (
+        <div className="info-section">
+          <p>
+            <strong>The Product Manager Accelerator Program</strong> is designed
+            to support PM professionals through every stage of their careers.
+            From students looking for entry-level jobs to Directors looking to
+            take on a leadership role, our program has helped over hundreds of
+            students fulfill their career aspirations.
+          </p>
+          <p>
+            Our Product Manager Accelerator community is ambitious and
+            committed. Through our program, they have learned, honed, and
+            developed new PM and leadership skills, giving them a strong
+            foundation for their future endeavors.
+          </p>
+        </div>
+      )}
       <h1>Weather Prediction</h1>
       
       <div className="form-group">
